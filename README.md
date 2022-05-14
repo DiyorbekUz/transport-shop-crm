@@ -1,7 +1,7 @@
 # transport-shop-crm
 
 # register form
-***
+* *
 
 mutation {
   register(
@@ -23,10 +23,10 @@ mutation {
   }
 }
 
-***
+* *
 
 #login form
-***
+* *
 mutation{
   login(staffname: "bilol" password: "bilol1"){
     status
@@ -42,11 +42,11 @@ mutation{
   }
 }
 
-***
+* *
 
 # addBranch
 
-***
+* *
 mutation{
   addBranch(branchname: "Qashqadarsyso mssoto", branchAdress: "Qashqadaryo"){
     status
@@ -63,11 +63,11 @@ mutation{
   }
 }
 
-***
+* *
 
 # changeBranch
 
-***
+* *
 mutation{
   changeBranch(branchId: 1, branchname: "Tashkentski"){
     status
@@ -80,12 +80,12 @@ mutation{
     }
   }
 }
-***
+* *
 
 
 # deleteBranch
 
-***
+* *
 mutation{
   deleteBranch(branchId: 2){
     status
@@ -100,10 +100,10 @@ mutation{
     }
   }
 }
-***
+* *
 
 # addTransport
-*** 
+* * 
 
 mutation uploadFile($transportImg: Upload!){
   addTransport(branchId: 1, transportname: "malibu", transportModel: "malibu2", transportColor: "white", transportImg: $transportImg){
@@ -119,11 +119,11 @@ mutation uploadFile($transportImg: Upload!){
   }
 }
 
-***
+* *
 
 # deleteTransport
 
-***
+* *
 mutation{
   deleteTransport(transportId: 2){
     status
@@ -137,4 +137,4 @@ mutation{
   }
 }
 
-***
+* *
