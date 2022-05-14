@@ -450,7 +450,7 @@ export default {
         transportAdress: global => global.branch_name || global.branch_id,
         transportModel: global => global.transport_model,
         transportColor: global => global.transport_color,
-        transportImg: global => 'https://transport-shop-crm.herokuapp.com/graphql/'+ global.transport_img,
+        transportImg: global => 'https://transport-shop-crm.herokuapp.com/'+ global.transport_img,
         transportCreatedAt: global => global.transport_created_at,
         staffId: global => global.staff_id,
     }
