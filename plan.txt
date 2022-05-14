@@ -1,0 +1,58 @@
+TRANSPORT SALE
+
+Data Model
+
+* branches		
+	name, time, address
+* transports
+	branch, model, color, img, time
+* staffs
+	branch, username, password, birth-date, gender
+
+* permissions
+	* create
+	* read
+	* delete
+	* update
+
+* permission modules
+	* transports
+	* branches
+	* permissions
+
+
+
+API
+mutation
+	* register (username, branch, password, repeat_password, birthdate, gender) -> token     public
+	* login    (username, password)                                             -> token     public
+
+	* addPermission(userId branch permissionModule permission)  private
+	* deletePermission                 private
+
+	* addTransport                     private
+	* changeTransport                  private
+	* deleteTransport                  private
+
+	* addBranch                        private
+	* changeBranch                     private
+	* deleteBranch                     private 
+
+query
+	* transports (branch, search)       private
+	* staffs                            private | public
+	* branches                          private
+	* allPermissions                    private
+	* ownPermissions   					public
+
+
+admin admin
+
+permission all branches
+	read
+	delete
+	update
+	create
+
+
+

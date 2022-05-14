@@ -1,0 +1,34 @@
+type Query {
+    branches(page: Int, limit: Int, search: String): Branch
+    branch(branchId: ID!): Branch
+}
+
+type Branch {   
+    branchId: ID
+    branchname: String
+    branchAdress: String
+    branchCreatedAt: String
+}
+
+
+type Mutation {
+    addBranch(
+        branchname: String!,
+        branchAdress: String!
+    ): MutationResponse
+
+    changeBranch(
+        branchId: ID!,
+        branchname: String, 
+        branchAdress: String
+    ): MutationResponse
+
+    deleteBranch(
+        branchId: ID!
+    ): MutationResponse!
+
+    login(
+        staffname: String!,
+        password: String
+    ): MutationResponse!
+}

@@ -1,0 +1,30 @@
+type Query {
+    staffs(page: Int, limit: Int, search: String): [Staff]
+    staff(staffId: ID!): Staff
+}
+
+type Staff {
+    staffId: ID
+    staffname: String
+    staffBirthDate: String
+    staffWorkPlace: String
+    fullAdress: String
+    staffIsRoot: Boolean
+    staffCreatedAt: String
+}
+
+
+type Mutation {
+    register(
+        staffname: String!, 
+        staffBirthDate: String!, 
+        password: String!,
+        repeatPassword: String!,
+        staffWorkPlace: ID!
+    ): MutationResponse!
+
+    login(
+        staffname: String!,
+        password: String
+    ): MutationResponse!
+}

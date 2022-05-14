@@ -1,0 +1,39 @@
+scalar Upload
+
+type Query {
+    transports(page: Int, limit: Int, search: String): Transport
+    transport(transportId: ID!): Transport
+}
+
+type Transport {   
+    transportId: ID
+    transportname: String
+    transportModel: String
+    transportColor: String
+    transportAdress: String
+    transportImg: String
+    transportCreatedAt: String
+    staffId: ID
+}
+
+
+type Mutation {
+    addTransport(
+        branchId: ID!,
+        transportname: String!,
+        transportModel: String!,
+        transportColor: String!,
+        transportImg: Upload! 
+    ): MutationResponse
+
+    changeTransport(
+        transportId: ID!,
+        transportname: String, 
+        transportColor: String
+        transportModel: String
+    ): MutationResponse
+
+    deleteTransport(
+        transportId: ID!
+    ): MutationResponse!
+}

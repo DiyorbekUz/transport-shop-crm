@@ -1,0 +1,9 @@
+type MutationResponse {
+    status: Int!
+    message: String!
+    token: String
+    data: GlobalType
+}
+
+## union types
+union GlobalType = Staff | Branch | Transport
