@@ -1,13 +1,13 @@
 import db from "#pg"
 import query from "./sql.js"
 
-async function branchPer({ staffId, branchName }) {
-    const branch = await db(query.BRANCH_PER,  staffId, branchName)
+async function branchPer({ staffId }) {
+    const branch = await db(query.BRANCH_PER,  staffId)
     return branch
 }
 
-async function resBranchPer({ page, limit, search, branchId }) {
-    const branch = await db(query.RES_BRANCH_PER, page, limit, search, branchId)
+async function resBranchPer({ page, limit, search, branchName }) {
+    const branch = await db(query.RES_BRANCH_PER, page, limit, search, branchName)
     return branch
 }
 

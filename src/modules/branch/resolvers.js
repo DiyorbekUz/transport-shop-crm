@@ -34,7 +34,6 @@ export default {
             
             let res = await model.branchPer({
                 staffId,
-                branchName
             })
 
             let checkk = await modelUser.getStaff({staffId})
@@ -48,22 +47,20 @@ export default {
                 return branch
             }
 
-            if(res[0]?.branch_read){
-                let branch = await model.getBranches({
-                    page: args.page ? args.page : BRANCH_CONFIG.PAGINATION.PAGE,
-                    limit: args.limit ? args.limit : BRANCH_CONFIG.PAGINATION.LIMIT,
-                    search: args.search
-                })
-                
-                return branch
-            }else{
-                return await model.getBranch({
-                    page: args.page ? args.page : BRANCH_CONFIG.PAGINATION.PAGE,
-                    limit: args.limit ? args.limit : BRANCH_CONFIG.PAGINATION.LIMIT,
-                    search: args.search,
-                    branchId
-                })
+            let newBranchs = []
+
+            for (let i = 0; i < res.length; i++) {
+                if(res[i]?.branch_read){
+                    let staffs =  await model.resBranchPer({
+                        page: args.page ? args.page : STAFF_CONFIG.PAGINATION.PAGE,
+                        limit: args.limit ? args.limit : STAFF_CONFIG.PAGINATION.LIMIT,
+                        search: args.search,
+                        branchName
+                    })
+                    newBranchs.push(...staffs)
+                }
             }
+            return newStaffs.length > 0 ? newStaffs : [await model.getBranch({branchId})]
         },
         branch: async(_, args, req) => {
             const {token} = req.headers
@@ -91,8 +88,7 @@ export default {
             }
             
             let res = await model.branchPer({
-                staffId,
-                branchName
+                staffId
             })
 
             let checkk = await modelUser.getStaff({staffId})

@@ -25,7 +25,7 @@ insert into transports (transport_name, transport_model, transport_color, transp
 insert into permissions_transports (transport_create, transport_read, transport_delete, transport_update, branch_id, staff_id) values
 (true, true, true, true, 1, 1),
 (false, false, false, false, 2, 2),
-(true, true, true, true, 3, 3)
+(true, true, false, false, 3, 3)
 ;
 
 -- update permissions_branches set branch_delete = true where staff_id = 2;
@@ -33,7 +33,7 @@ insert into permissions_transports (transport_create, transport_read, transport_
 insert into permissions_branches (branch_create, branch_read, branch_delete, branch_update, branch_id, staff_id) values
 (true, true, true, true, 1, 1),
 (false, false, false, false, 2, 2),
-(true, true, true, true, 3, 3)
+(false, true, false, false, 3, 3)
 ;
 
 -- update permissions_transports set transport_read = true where staff_id = 5;
@@ -41,4 +41,4 @@ insert into permissions_branches (branch_create, branch_read, branch_delete, bra
 insert into permissions_staffs(staff_create, staff_read, staff_update, staff_delete, branch_id, staff_id) values 
 (true, true, true, true, 1, 1),
 (false, false, false, false, 2, 2),
-(true, true, true, true, 3, 3);
+(false, true, false, false, 3, 3);

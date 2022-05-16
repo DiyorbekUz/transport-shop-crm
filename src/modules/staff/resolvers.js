@@ -64,7 +64,7 @@ export default {
             })
             const {ip, agent, staffId, branchname, isRoot } = JWT.verify(token)
 
-            if(!staffs.find(user => user.satff_id == staffId)){
+            if(!staffs.find(user => user.staff_id == staffId)){
                 throw new UserInputError("User is un authorizate!")
             }
 

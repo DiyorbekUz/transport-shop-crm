@@ -54,31 +54,31 @@ const ADD_STAFF = `
     ) returning *
 `
 
-const ADD_PER_TRANS = `
-    insert into permissions_transports(
-        branch_id, staff_id
-    ) values (
-        $1,
-        $2
-    );
-`
+// const ADD_PER_TRANS = `
+//     insert into permissions_transports(
+//         branch_id, staff_id
+//     ) values (
+//         $1,
+//         $2
+//     );
+// `
 
-const ADD_PER_BRANCH = `
-insert into permissions_branches(
-    branch_id, staff_id
-) values (
-    $1,
-    $2
-);
-`
+// const ADD_PER_BRANCH = `
+// insert into permissions_branches(
+//     branch_id, staff_id
+// ) values (
+//     $1,
+//     $2
+// );
+// `
 
-const ADD_PER_STAFF = `
-insert into permissions_staffs(
-    branch_id, staff_id
-) values (
-    $1,
-    $2
-);`
+// const ADD_PER_STAFF = `
+// insert into permissions_staffs(
+//     branch_id, staff_id
+// ) values (
+//     $1,
+//     $2
+// );`
 
 const STAFF_LOGIN = `
 select
@@ -98,14 +98,14 @@ where s.staff_name = $1 and s.staff_password = $2
 const STAFF_PER = `
     select
         ps.staff_read,
-        ps.staff_create,
         ps.staff_delete,
         ps.staff_update,
+        ps.branch_id,
         b.branch_name,
         ps.staff_id
     from permissions_staffs ps
     inner join branches b on ps.branch_id = b.branch_id
-    where ps.staff_id = $1 and b.branch_name = $2
+    where ps.staff_id = $1
 `
 
 const RES_STAFF_PER = `
@@ -118,17 +118,37 @@ s.staff_id,
     CONCAT(b.branch_name, ' ', b.branch_address) as full_adress
 from staffs as s
 inner join branches as b on s.branch_id = b.branch_id
-where b.branch_name = $4 and s.staff_name ilike concat('%', $3::varchar, '%')
+where s.branch_id = $4 and s.staff_name ilike concat('%', $3::varchar, '%')
 offset $1 limit $2
 `
+
+const TEST_STAFF_PER = `
+select
+    s.staff_id,
+    s.staff_name,
+    s.staff_birth_date,
+    s.staff_is_root,
+    b.branch_name,
+    s.branch_id,
+    s.staff_created_at,
+    CONCAT(b.branch_name, ' ', b.branch_address) as full_adress
+from staffs as s
+inner join branches as b on s.branch_id = b.branch_id
+where s.branch_id = $4
+order by s.staff_id
+offset $1 limit $2
+;
+`
+    
 
 export default {
     GET_STAFFS,
     GET_STAFF,
     ADD_STAFF,
-    ADD_PER_TRANS,
-    ADD_PER_BRANCH,
-    ADD_PER_STAFF,
+    TEST_STAFF_PER,
+    // ADD_PER_TRANS,
+    // ADD_PER_BRANCH,
+    // ADD_PER_STAFF,
     STAFF_LOGIN,
     STAFF_PER,
     RES_STAFF_PER

@@ -13,7 +13,7 @@ create extension pgcrypto;
 
 
 --table branches
-drop table if exists branches CASCADE;
+drop table if exists branches;
 create table branches   (
     branch_id serial not null primary key,
     branch_name varchar(64) not null unique,
@@ -21,7 +21,7 @@ create table branches   (
     branch_created_at timestamptz default current_timestamp
 );
 
-drop table if exists staffs CASCADE;
+drop table if exists staffs;
 create table staffs (
     staff_id serial not null primary key,
     staff_name varchar(64) not null unique,
@@ -34,7 +34,7 @@ create table staffs (
 );
 
 
-drop table if exists transports CASCADE;
+drop table if exists transports;
 create table transports (
     transport_id serial not null primary key,
     transport_name varchar(64) not null,
@@ -48,7 +48,7 @@ create table transports (
 
 
 
-drop table if exists permissions_transports CASCADE;
+drop table if exists permissions_transports;
 create table permissions_transports (
     transport_permission_id serial not null primary key,
     transport_create boolean default false,
@@ -59,7 +59,7 @@ create table permissions_transports (
     staff_id int not null references staffs(staff_id) ON DELETE CASCADE
 );
 
-drop table if exists permissions_branches CASCADE;
+drop table if exists permissions_branches;
 create table permissions_branches (
     branch_permission_id serial not null primary key,
     branch_create boolean default false,
@@ -70,10 +70,9 @@ create table permissions_branches (
     staff_id int references staffs(staff_id) ON DELETE CASCADE
 );
 
-drop table if exists permissions_staffs CASCADE;
+drop table if exists permissions_staffs;
 create table permissions_staffs (
     staff_permission_id serial not null primary key,
-    staff_create boolean default false,
     staff_read boolean default false,
     staff_delete boolean default false,
     staff_update boolean default false,

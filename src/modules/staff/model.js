@@ -29,9 +29,9 @@ async function getStaff({ staffId }) {
 async function addStaff({staffname, password, staffBirthDate, staffWorkPlace }) {
     const [staff] = await db(query.ADD_STAFF, staffname, password, staffBirthDate, staffWorkPlace)
     if (typeof staff == 'object' && Object.getOwnPropertyNames(staff).length) {
-        const res = await db(query.ADD_PER_STAFF, staff.branch_id, staff.staff_id)
-        const res1 = await db(query.ADD_PER_BRANCH, staff.branch_id, staff.staff_id)
-        const res2 = await db(query.ADD_PER_TRANS, staff.branch_id, staff.staff_id)
+        // const res = await db(query.ADD_PER_STAFF, staff.branch_id, staff.staff_id)
+        // const res1 = await db(query.ADD_PER_BRANCH, staff.branch_id, staff.staff_id)
+        // const res2 = await db(query.ADD_PER_TRANS, staff.branch_id, staff.staff_id)
     }
     return staff
 }

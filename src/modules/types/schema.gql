@@ -5,5 +5,11 @@ type MutationResponse {
     data: GlobalType
 }
 
+type permissionResponse {
+    status: Int!
+    message: String!
+    data: GlobalType
+}
+
 ## union types
-union GlobalType = Staff | Branch | Transport
+union GlobalType = Staff | Branch | Transport | TransportPermission | StaffPermission

@@ -29,7 +29,7 @@ export default {
                 throw new UserInputError("User is un authorizate!")
             }
 
-            if(!staffs.find(user => user.satff_id == staffId)){
+            if(!staffs.find(user => user.staff_id == staffId)){
                 throw new UserInputError("User is un authorizate!")
             }
             
@@ -51,7 +51,7 @@ export default {
                     search: args.search
                 })
                 
-                return transport
+                return transport[0]
             }
 
             if(res[0]?.transport_read){
@@ -61,7 +61,7 @@ export default {
                     search: args.search
                 })
                 
-                return transport
+                return transport[0]
             }else{
                 throw new Error("You don't have permission")
             }
@@ -98,7 +98,7 @@ export default {
             let checkk = await modelUser.getStaff({staffId})
             if (checkk?.staff_is_root) {
                 let transport = await model.getTransport({transportId: args.transportId})
-                return transport
+                return transport[0]
             }
 
             if(res[0]?.transport_read){
@@ -131,11 +131,6 @@ export default {
             }
 
             let { branchId, transportname, transportModel, transportColor, transportImg } = args
-            const transports = await model.getTransports({
-                page: args.page ? args.page : TRANSPORT_CONFIG.PAGINATION.PAGE,
-                limit: args.limit ? args.limit : TRANSPORT_CONFIG.PAGINATION.LIMIT,
-                search: args.search
-            })
 
             
             transportname = transportname.trim()
@@ -450,7 +445,7 @@ export default {
         transportAdress: global => global.branch_name || global.branch_id,
         transportModel: global => global.transport_model,
         transportColor: global => global.transport_color,
-        transportImg: global => 'http://localhosthttps://transport-shop-crm.herokuapp.com/graphql/'+ global.transport_img,
+        transportImg: global => 'https://transport-shop-crm.herokuapp.com/'+ global.transport_img,
         transportCreatedAt: global => global.transport_created_at,
         staffId: global => global.staff_id,
     }

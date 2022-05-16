@@ -1,0 +1,39 @@
+# type Query {
+#     transports(page: Int, limit: Int, search: String): Transport
+#     transport(transportId: ID!): Transport
+# }
+
+type TransportPermission {  
+    transportPermissionId: ID
+    staffId: ID!
+    branchId: ID!
+    transportCreate: Boolean
+    transportRead: Boolean
+    transportDelete: Boolean
+    transportUpdate: Boolean
+}
+
+
+type Mutation {
+    addPermissionTransport(
+        perStaffId: ID!
+        branchId: ID!
+        transportCreate: Boolean
+        transportRead: Boolean
+        transportDelete: Boolean
+        transportUpdate: Boolean
+    ): permissionResponse!
+
+    changeTransportPermission(
+        perStaffId: ID!
+        branchId: ID!
+        transportCreate: Boolean
+        transportRead: Boolean
+        transportDelete: Boolean
+        transportUpdate: Boolean
+    ): permissionResponse!
+
+    deleteTransportPermission(
+        transportPermissionId: ID
+    ): permissionResponse!
+}
