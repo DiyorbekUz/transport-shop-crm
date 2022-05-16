@@ -444,7 +444,11 @@ export default {
         transportname: global => global.transport_name,
         transportAdress: global => global.branch_name || global.branch_id,
         transportModel: global => global.transport_model,
+<<<<<<< HEAD
         transportColor: global => global.transport_color,
+=======
+        transportColor: global => global.transport_color, 
+>>>>>>> 0fe818b65bb7198f697c7141231cc4a7195c5e37
         transportImg: global => 'https://transport-shop-crm.herokuapp.com/'+ global.transport_img,
         transportCreatedAt: global => global.transport_created_at,
         staffId: global => global.staff_id,
