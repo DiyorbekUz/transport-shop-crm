@@ -138,3 +138,133 @@ mutation{
 }
 
 ```
+
+# PERMISSIONS
+
+# Add Permission Staffs
+
+```
+mutation{
+  addPermissionStaff(
+    perStaffId: 2
+    branchId: 2
+    staffRead: true
+  ){
+    status
+    message
+    data{
+      ... on StaffPermission{
+        staffId
+        staffRead
+      }
+    }
+  }
+}
+```
+
+# change permission Staffs
+
+```
+mutation{
+  changeStaffPermission(
+    perStaffId: 2
+    branchId: 2
+    staffRead: true
+  ){
+    status
+    message
+    data{
+      ... on StaffPermission{
+        staffId
+        staffRead
+        staffDelete
+      }
+    }
+  }
+}
+```
+
+# delete permission Staffs
+
+```
+
+mutation{
+  deleteStaffPermission(staffPermissionId: 1){
+    status
+    message
+    data{
+      ... on StaffPermission{
+        staffId
+        staffRead
+        staffDelete
+      }
+    }
+  }
+}
+
+
+```
+
+# Add Permission Transports
+
+```
+mutation{
+  addPermissionTransport(
+  	perStaffId: 2
+    branchId: 2
+    transportCreate: true,
+    transportRead: true
+  ){
+    status
+    message
+    data{
+      ... on TransportPermission{
+        transportPermissionId
+        transportCreate
+      }
+    }
+  }
+}
+
+
+```
+
+# change permission Transports
+
+```
+mutation{
+  deleteTransportPermission(
+    transportPermissionId: 2
+  ){
+  	status
+    message
+    data{
+      ... on Permission{
+        transportRead
+        
+      }
+    }
+  }
+}
+```
+
+# delete permission Transports
+
+```
+
+mutation{
+  deleteTransportPermission(
+    transportPermissionId: 2
+  ){
+  	status
+    message
+    data{
+      ... on Permission{
+        transportRead
+        
+      }
+    }
+  }
+}
+```
+
